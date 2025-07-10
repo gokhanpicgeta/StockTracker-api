@@ -7,6 +7,9 @@ const app = express();
 const uri = process.env.MONGODB_URI;
 let collection;
 
+const cors = require("cors");
+app.use(cors()); // allow all origins
+
 MongoClient.connect(uri, { useUnifiedTopology: true })
   .then(client => {
     collection = client.db("test_database").collection("example_collection");
